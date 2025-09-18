@@ -36,6 +36,7 @@ This README is written for **OpenEdge developers new to Python/LiveKit** and is 
 ## Prerequisites
 
 - **Progress OpenEdge** (PASOE, OE Explorer/Management, PDSOE)
+- **Visual Studio Code** (Code editor for python and js) - https://code.visualstudio.com/
 - **Node.js** (for React frontend) — https://nodejs.org/
 - **Python 3.10+** (venv)
 - A modern browser with mic access (if testing voice)
@@ -69,6 +70,7 @@ This README is written for **OpenEdge developers new to Python/LiveKit** and is 
 ---
 ## Useful Links
 
+- **Visual Studio Code** (Code editor for Python and JS) [https://code.visualstudio.com/](https://code.visualstudio.com/)
 - **Python** (For agent serverside code) — [https://www.python.org/downloads/](https://www.python.org/downloads/)
 - **LiveKit** — [https://livekit.io/](https://livekit.io/)
 - **LiveKit Playground** (To test agent) — [https://agents-playground.livekit.io/](https://agents-playground.livekit.io/)
