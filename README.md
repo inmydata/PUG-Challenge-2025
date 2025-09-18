@@ -12,23 +12,24 @@ This README is written for **OpenEdge developers new to Python/LiveKit** and is 
 
 1. [Prerequisites](#prerequisites)
 2. [Repository Layout](#repository-layout)
-3. [Environment Variables](#environment-variables)
-4. [Part A — Setup Notes (Do These First)](#part-a--setup-notes-do-these-first)
+3. [Useful Links](#useful-links)
+4. [Environment Variables](#environment-variables)
+5. [Part A — Setup Notes (Do These First)](#part-a--setup-notes-do-these-first)
     - [A1. Create OpenEdge DB & PASOE REST](#a1-create-openedge-db--pasoe-rest)
     - [A2. Build the Python OEDatabaseDriver](#a2-build-the-python-oedatabasedriver)
     - [A3. Create LiveKit & OpenAI Accounts](#a3-create-livekit--openai-accounts)
     - [A4. Build the Agent Backend](#a4-build-the-agent-backend)
     - [A5. Frontend (React + LiveKit)](#a5-frontend-react--livekit)
     - [A6. Token Server (for secure LiveKit tokens)](#a6-token-server-for-secure-livekit-tokens)
-5. [Part B — Step-by-Step Workshop (Concepts + Code)](#part-b--step-by-step-workshop-concepts--code)
+6. [Part B — Step-by-Step Workshop (Concepts + Code)](#part-b--step-by-step-workshop-concepts--code)
     - [Step 1: Environment Setup & Connectivity Test](#step-1-environment-setup--connectivity-test)
     - [Step 2: Save Car via REST](#step-2-save-car-via-rest)
     - [Step 3: Retrieve Car via REST](#step-3-retrieve-car-via-rest)
     - [Step 4: Single Agent with Tools (LiveKit Agents)](#step-4-single-agent-with-tools-livekit-agents)
     - [Step 5: Booking Appointments](#step-5-booking-appointments)
     - [Step 6: Multi-Agent Handoff (Account → Booking)](#step-6-multi-agent-handoff-account--booking)
-6. [Troubleshooting](#troubleshooting)
-7. [License](#license)
+7. [Troubleshooting](#troubleshooting)
+8. [License](#license)
 
 ---
 
@@ -65,8 +66,14 @@ This README is written for **OpenEdge developers new to Python/LiveKit** and is 
   requirements.txt
   .env       
 ```
-
 ---
+## Useful Links
+
+- **Python** (For agent serverside code) — [https://www.python.org/downloads/](https://www.python.org/downloads/)
+- **LiveKit** — [https://livekit.io/](https://livekit.io/)
+- **LiveKit Playground** (To test agent) — [https://agents-playground.livekit.io/](https://agents-playground.livekit.io/)
+- **OpenAI Platform** (To create OpenAI API Key) [https://platform.openai.com/](https://platform.openai.com/)
+- **Node.js** (for React frontend) — [https://nodejs.org/](https://nodejs.org/)
 
 ## Environment Variables
 
