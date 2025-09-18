@@ -1,0 +1,85 @@
+ADD TABLE "Booking"
+  AREA "Schema Area"
+  DUMP-NAME "booking"
+
+ADD FIELD "BookingDate" OF "Booking" AS date 
+  FORMAT "99/99/99"
+  INITIAL ?
+  LABEL "Booking Date"
+  MAX-WIDTH 4
+  COLUMN-LABEL "Booking Date"
+  ORDER 10
+
+ADD FIELD "Reg" OF "Booking" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Car Registration"
+  MAX-WIDTH 16
+  COLUMN-LABEL "Car Registration"
+  ORDER 20
+
+ADD FIELD "Description" OF "Booking" AS character 
+  FORMAT "x(60)"
+  INITIAL ""
+  LABEL "Description"
+  MAX-WIDTH 120
+  COLUMN-LABEL "Description"
+  ORDER 30
+
+ADD INDEX "BookingDate" ON "Booking" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "BookingDate" ASCENDING 
+
+ADD INDEX "Reg" ON "Booking" 
+  AREA "Schema Area"
+  INDEX-FIELD "Reg" ASCENDING 
+
+ADD TABLE "Car"
+  AREA "Schema Area"
+  DUMP-NAME "Car"
+
+ADD FIELD "make" OF "Car" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "make"
+  MAX-WIDTH 60
+  COLUMN-LABEL "make"
+  ORDER 20
+
+ADD FIELD "model" OF "Car" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "model"
+  MAX-WIDTH 60
+  COLUMN-LABEL "model"
+  ORDER 30
+
+ADD FIELD "year" OF "Car" AS integer 
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "Year"
+  MAX-WIDTH 4
+  COLUMN-LABEL "Year"
+  ORDER 40
+
+ADD FIELD "reg" OF "Car" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Reg"
+  MAX-WIDTH 40
+  COLUMN-LABEL "Reg"
+  ORDER 10
+
+ADD INDEX "reg-idx" ON "Car" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "reg" ASCENDING 
+
+.
+PSC
+cpstream=ISO8859-1
+.
+0000001500

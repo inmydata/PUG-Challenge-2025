@@ -1,0 +1,7 @@
+python-dotenv
+requests
+livekit-api
+flask[async]
+flask
+flask-cors
+uvicorn
