@@ -121,7 +121,7 @@ python python/step1/OEDatabaseDriver.py
    ```text
    load oeautos.df
    ```
-4. Add `oeautos` database to **Progress OE Explorer** and start it.
+4. Add `oeautos` database to **Progress OE Explorer** and start it (make a note of the port number <<PORT>>).
 5. Create a new **Progress Application Server** with the following settings:
    - Instance name: `oeautos`  
    - AdminServer: `localhost`  
@@ -135,25 +135,37 @@ python python/step1/OEDatabaseDriver.py
 8. In **OE Developer**:
    - Choose `C:\OpenEdge\WRK\oeautos` as the new workspace
    - Create a new OpenEdge project named **AgentTools**
+   - Server project
    - Transport: REST
    - Finish → Open Perspective
 9. Add database to project:
-   - Right-click project → **Properties** → **OpenEdge Database Connections** → Configure  
-   - Add new connection for `oeautos` server.
-10. Add a new webhandler:
+   - Right-click project → **Properties** → **Progress OpenEdge** → **Database Connections** → Configure database connections 
+   - Click New to add new connection for `oeautos` server.
+   - Connection name: oeautos
+   - Physical name: db\oeautos
+   - Host name: localhost
+   - Service/Port: <<PORT>>
+   - Press Next to Finish, then Apply and Close
+   - Select checkbox next to the new connection, Apply and Close
+10. Add Server to project:
+   - Select Servers panel
+   - Click on "No servers are available. Click this link to create a new server .."
+   - Select **Progress Software Corporation** → **Progress Application Server for OpenEdge**, and press Next
+   - Select oeautos PAS and press Finish
+11. Add a new webhandler:
     - Name: `carRestHandler`  
     - Unselect all method stubs  
     - Copy in template code
-11. Add REST service:
+12. Add REST service:
     - Go to **Defined Services → AgentToolsService**
     - Create new ABL Service:
       - Transport: REST  
       - Name: `carService`  
       - Relative URI: `/carService`
-12. Add **resources**:
+13. Add **resources**:
     - `saveCar` (POST) → bind to `carRestHandler.SaveCar` with form params: `reg, make, model, year`
     - `getCar` (GET) → bind to `carRestHandler.GetCar` with query param `reg` and response `ttCar`
-13. Publish the service to the `oeautos` server.
+14. Publish the service to the `oeautos` server.
 
 ---
 
