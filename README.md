@@ -28,7 +28,7 @@ You’ll **copy** the code for each step from the provided `examples/` folders a
 - **Python 3.10+** (venv)
 - A modern browser with mic access (if testing voice)
 - **Accounts/keys:**
-  - **LiveKit** (API key/secret, room host)
+  - **LiveKit** (API key/secret, URL)
   - **OpenAI** (API key)
 
 > You’ll place secrets in a local `.env` file during setup.
