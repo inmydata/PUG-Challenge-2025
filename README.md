@@ -138,7 +138,6 @@ python python/step1/OEDatabaseDriver.py
    - Server project
    - Transport: REST
    - Finish → Open Perspective
-   - Delete **Defined Services** → **AgentToolsService** (we will create are own')
 9. Add database to project:
    - Right-click project → **Properties** → **Progress OpenEdge** → **Database Connections** → Configure database connections 
    - Click New to add new connection for `oeautos` server.
