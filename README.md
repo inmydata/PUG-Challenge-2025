@@ -314,25 +314,25 @@ python python/step1/OEDatabaseDriver.py
 ### Step 7: Frontend (optional)
 1. If you don’t already have it, download and install node.js  [https://nodejs.org/](https://nodejs.org/)
 2. Open new cmd and cd to C:\Work
-2. Run command 
+3. Run command 
   ```bash
   npm create vite@latest frontend -- --template react
   ```
-3. Open frontend directory in a new VSCode window
-3. Install dependencies:
+4. Open frontend directory in a new VSCode window
+5. Install dependencies:
    ```bash
    npm install
    npm install @livekit/components-react @livekit/components-styles livekit-client --save
    ```
-4. Delete “C:\Work\frontend\src\assets” and “C:\Work\frontend\public” folders
-5. Copy in contents of frontend\step 1
-6. Log in to https://LiveKit.io, got settings..API Keys .. Generate Token
-10. Copy token to line 16 of src/components/LiveKitModal.jsx 
-11. Create a .env file and enter 
+6. Delete “C:\Work\frontend\src\assets” and “C:\Work\frontend\public” folders
+7. Copy in contents of frontend\step 1
+8. Log in to https://LiveKit.io, got settings..API Keys .. Generate Token
+9. Copy token to line 16 of src/components/LiveKitModal.jsx 
+10. Create a .env file and enter 
   ```
   VITE_LIVEKIT_URL=\[YOUR LIVEKIT URL\]
   ```
-12. Run front end with 
+11. Run front end with 
   ```bash
    npm run dev
    ```
