@@ -1,8 +1,6 @@
 from dotenv import load_dotenv
 import os
 import requests
-from dataclasses import dataclass
-from typing import Optional
 
 load_dotenv(".env", override=True)
 
@@ -14,13 +12,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 BASE_URL = os.getenv("OE_SERVICE_URL")
-
-@dataclass
-class Car:
-    reg: str
-    make: str
-    model: str
-    year: int
 
 class OEDatabaseDriver:
     def save_car(self, reg: str, make: str, model: str, year: int) -> bool:
@@ -65,43 +56,12 @@ class OEDatabaseDriver:
             print(f"Request failed: {e}")
             return False
 
-    def get_car(self, reg: str) -> Optional[Car]:
-        """
-        Look up a car by registration.
-        Returns a Car if found, otherwise None.
-        """
-        url = f"{BASE_URL}carService/getCar"
-        headers = {"Accept": "application/json"}
 
-        try:
-            r = requests.get(url, params={"reg": reg}, headers=headers, timeout=10)
-            r.raise_for_status()
-            data = r.json()
-
-            cars = data.get("ttCar") or []
-            if not cars:
-                return None
-
-            c = cars[0]
-            return Car(
-                reg=c.get("reg", ""),
-                make=c.get("make", ""),
-                model=c.get("model", ""),
-                year=int(c.get("year")) if c.get("year") is not None else 0,
-            )
-        except requests.RequestException as e:
-            # Bubble up or log as you prefer; returning None keeps the same signature
-            print(f"Request failed: {e}")
-            return None
-
-
-# Example usage:
+# Example usage
 if __name__ == "__main__":
     driver = OEDatabaseDriver()
-    car = driver.get_car("GJ18YBR")
-    if car:
-        print("Found:", car)
-    else:
-        print("No car found for that reg.")
+    success = driver.save_car("GJ18YBR", "Audi", "A4", 2018)
+    print("Car saved successfully:", success)
+
 
 

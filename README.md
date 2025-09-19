@@ -218,7 +218,7 @@ python python/step1/OEDatabaseDriver.py
    ```
 6. Create a `.env` file with:
    ```
-   OE_SERVICE_URL=http://localhost:8080/oeautos/rest/
+   OE_SERVICE_URL=http://localhost:8080/AgentTools/rest/
    ```
 7. Copy `OEDatabaseDriver.py` Step 1 code to C:\Work\Agent\OEDatabaseDriver.py (load `.env` and print `OE_SERVICE_URL`).
 8. Run the code to test
@@ -228,16 +228,17 @@ python python/step1/OEDatabaseDriver.py
 ---
 
 ### Step 3: Python Driver – Saving & Retrieving Cars
-1. Install `requests`:
+1. Copy requirements.txt and OEDatabaseDriver.py from Step 2 into C:\work\Agents. Note 'requests' has been added to requirements.txt and OEDatabaseDriver.py now shows errors
+2. Install new dependencies
    ```bash
-   pip install requests
+   pip install -r requirements.txt
    ```
-2. Extend `OEDatabaseDriver.py` with:
-   - `save_car(reg, make, model, year)` → POST to `/carService/saveCar`
-   - `get_car(reg)` → GET from `/carService/getCar`, parse JSON `ttCar`, and return a `Car` dataclass.
-3. Test scripts:  
-   - Run Step2 and Step3 versions of `OEDatabaseDriver.py`
-   - Remove test code afterwards.
+2. Review save_car method
+3. Run the code to test
+  ```bash
+   py OEDatabaseDriver.py
+   ```
+4. Use OpenEdge\ViewCars.w to confirm record has been created
 
 ---
 

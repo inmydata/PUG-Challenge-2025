@@ -1,12 +1,11 @@
 from livekit.agents.llm import function_tool
 from livekit.agents import Agent
 from prompts import INSTRUCTIONS
-from OEDatabaseDriver import OEDatabaseDriver, Car, Booking
+from OEDatabaseDriver import OEDatabaseDriver, Car
 from typing import Annotated
 from dataclasses import asdict
-from datetime import date, datetime
 import logging
-
+import enum
 
 
 logger = logging.getLogger("user-data")
@@ -59,41 +58,3 @@ class Assistant(Agent):
         self._car_details = Car(reg=reg, make=make, model=model, year=year)
         
         return "car created!"
-    
-    def date_to_long_string(self, d: date) -> str:
-        day = d.day
-        # Work out suffix
-        if 11 <= day <= 13:
-            suffix = "th"
-        else:
-            suffix = {1: "st", 2: "nd", 3: "rd"}.get(day % 10, "th")
-        return f"{day}{suffix} {d.strftime('%B %Y')}"
-
-    @function_tool
-    async def get_the_date_today(self):
-        logger.info("lookup today's date")
-        date_str = self.date_to_long_string(date.today())
-        return f"The date today is {date_str}"
-    
-    @function_tool
-    async def get_next_available_booking_date(self, earliest_date: Annotated[date, "Earliest date for booking"]):
-        logger.info("lookup next available booking slot")
-        date_str = self.date_to_long_string(driver.get_next_available_booking(earliest_date))
-        return f"The next available booking date is {date_str}"
-    
-    @function_tool 
-    async def book_appointment(self, reg: Annotated[str, "Car registration number"], date: Annotated[date, "Date for the appointment"], description: Annotated[str, "Description of the appointment"]):
-        logger.info("booking appointment")
-        if driver.save_booking(reg.upper().replace(" ", ""), date, description):
-            return f"Appointment booked for {self.date_to_long_string(date)} with description: {description}"
-        else:
-            return "Failed to book appointment, please try again later"
-        
-    @function_tool
-    async def get_booking(self, reg: Annotated[str, "Car registration number"]):
-        logger.info("get next appointment")
-        booking = driver.get_booking(reg.upper().replace(" ", ""))
-        if booking is None:
-            return "No appointment found"
-        else:
-            return f"Next appointment is on {self.date_to_long_string(booking.booking_date)} with description: {booking.description}"

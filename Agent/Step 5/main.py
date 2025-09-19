@@ -13,7 +13,7 @@ async def entrypoint(ctx: agents.JobContext):
     session = AgentSession(
         llm=openai.realtime.RealtimeModel(
             voice="shimmer",
-            temperature=0.8
+            temperature=0.8,
         )
     )
 
