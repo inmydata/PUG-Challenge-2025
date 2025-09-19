@@ -250,66 +250,111 @@ python python/step1/OEDatabaseDriver.py
    ```
 ---
 
-### Step 4: Introducing the AI Agent (LiveKit Integration)
-1. Create a **LiveKit** account → project → API Key → save values in `.env`.
-2. Create an **OpenAI** account → API Key → save to `.env`.
-3. Build `agent.py` with:
-   - `Assistant` subclass of `livekit.agents.Agent`
-   - Tools exposed with `@function_tool`:
-     - `lookup_car_by_registration_number_in_database`
-     - `add_car_details_to_database`
-     - `get_details_of_current_car`
-   - Agent state stores current car (`Car` dataclass).
-   - `prompts.py` defines INSTRUCTIONS and WELCOME_MESSAGE.
-4. Run `main.py` to start an agent session.
-
----
-
-### Step 5: Booking Functionality
-1. Add new OpenEdge service for bookings (`bookingRestHandler`), publish similar to car service.
-2. Extend Python driver with:
-   - `get_next_available_booking(start_date)`
-   - `save_booking(reg, booking_date, description)`
-   - `get_booking(reg)`
-3. Extend agent with booking tools:
-   - `get_the_date_today`
-   - `get_next_available_booking_date`
-   - `book_appointment`
-   - `get_booking`
-4. Update prompts so the agent offers booking after car lookup.
-
----
-
-### Step 6: Multi-Agent Architecture
-1. Create `accountAgent.py`:
-   - Handles car lookup/creation.
-   - Transfers to booking agent when account found.
-2. Create `bookingAgent.py`:
-   - Handles booking flow (dates, appointments).
-   - Receives `Car` object from account agent for context.
-3. Main app starts with AccountAssistant → transfers to BookingAssistant.
-
----
-
-### Step 7: Frontend
-1. Install Node.js
-2. Create React project:
+### Step 5: Introducing the AI Agent (LiveKit Integration)
+1. Copy contents of Step 5 into c:\work\Agent
+2. Install new dependencies
    ```bash
-   npm create vite@latest frontend -- --template react
+   pip install -r requirements.txt
    ```
+3. Create a **LiveKit** account:
+    - Goto [https://livekit.io](https://livekit.io)
+    - Click **Start Building**
+    - Create account
+    - Create you first project: name 'PUG Challenge'
+    - Complete survey
+    - **Settings** → **API Keys**
+    - Select API Key
+    - Press Reveal Secret
+    - Copy **Environmental Variables**
+    - Paste into .env
+4. Create an **OpenAI** account
+    - Create an account at https://platform.openai.com/ (you will need to add some credit. $5 is plenty.)
+    - Click cog icon (top right) 
+    - Select **API keys**
+    - press **+ Create new secret key**
+    - Copy secret
+    - Add **OPENAI_API_KEY=\[YOUR KEY\]** to .env and save
+5. Review code
+6. Start agent:
+  ```bash
+   py main.py dev
+   ```
+7. Log into [https://agents-playground.livekit.io/](https://agents-playground.livekit.io/) and connect
+8. Check the agent can create a car in the DB. Disconnect, and re-connect, check the agent can look up a car. 
+
+---
+
+### Step 6: Booking Functionality
+1. Add new OpenEdge web handler for bookings (`bookingRestHandler`), copy code from Step 6
+2. Add new ABL Service (`bookingService`)
+3. Add REST resource (`getNextAvailableBooking`), GET verb bound to GetNextAvailableBooking, with input query parameter startDate, and output bookingDate to the Body.
+4. Add REST resource (`saveBooking`), POST bound to verb bound to SaveBooking, with form parameters reg, bookingDate and description and output response bound to Body.
+5. ADD REST resource (`getBooking`), GET verb bound to GetBooking, with query parameter reg, and output parametersBookingDate and Description bound to the Body parameters **Note:** You need to bind these parameters to the parameters section of the body (`[Drop a parameter here]`), not the body itself
+6. Save your changes, and publish to the server.
+7. Copy in code from STEP 6 and review.
+8. Start agent:
+  ```bash
+   py main.py dev
+   ```
+9. Log into [https://agents-playground.livekit.io/](https://agents-playground.livekit.io/) and connect
+10. Check the agent can create a booking in the DB. Disconnect, and re-connect, check the agent can look up a booking.  
+
+---
+
+### Step 7: Multi-Agent Architecture
+1. Copy in code from STEP 7 and review.
+2. Start agent:
+  ```bash
+   py main.py dev
+   ```
+3. Log into [https://agents-playground.livekit.io/](https://agents-playground.livekit.io/) and check agent behaviour
+
+---
+
+### Step 7: Frontend (optional)
+1. If you don’t already have it, download and install node.js  [https://nodejs.org/](https://nodejs.org/)
+2. Run command `npm create vite@latest frontend -- --template react`
+3. Open frontend directory in a new VSCode window
 3. Install dependencies:
    ```bash
    npm install
    npm install @livekit/components-react @livekit/components-styles livekit-client --save
    ```
-4. Delete default assets/public folders, replace with `frontend/step1`.
-5. Create and run a **Token Server** (Python, with `.env` livekit values).
-6. Replace `frontend/step2` code, run:
-   ```bash
+4. Delete “C:\Work\frontend\src\assets” and “C:\Work\frontend\public” folders
+5. Copy in contents of frontend\step 1
+6. Log in to https://LiveKit.io, got settings..API Keys .. Generate Token
+10. Copy token to line 16 of src/components/LiveKitModal.jsx 
+11. Run front end with 
+  ```bash
    npm run dev
    ```
 
 ---
+
+### Step 8: Token Server (optional)
+1. Create directory C:\work\TokenServer
+2. Open a new VSCode window, and open directory C:\work\TokenServer
+3. New Terminal
+4. Create virtual environment
+  ```bash
+  py -m venv .venv 
+  ```
+5. copy contents of TokenServer from the workshop files
+6. Install requirements 
+  ```bash
+  pip install -r requirements.txt
+  ```
+7. Enter livekit values into .env
+8. Start server 
+  ```bash
+  py server.py
+  ```
+9. Copy contents of frontend\step 2
+10. Run frontend with 
+  ```bash
+  npm run dev”
+  ```
+
 
 ## Testing the Agent (suggested flow)
 
