@@ -199,12 +199,16 @@ python python/step1/OEDatabaseDriver.py
 ---
 
 ### Step 2: Python Driver – Environment & Connectivity
-1. Create and activate a virtual environment:
+1. Install VSCode and Python (if you don't already have them).
+    - **Visual Studio Code** — <https://code.visualstudio.com/>
+    - **Python** (For agent server-side code) — <https://www.python.org/downloads/>
+3. Create directory C:\Work\Agent and open folder in VSCode
+4. Create and activate a virtual environment:
    ```bash
    py -m venv .venv
    .\.venv\Scripts\activate
    ```
-2. Create a `requirements.txt` file and add:
+5. Create a `requirements.txt` file and add:
    ```
    python-dotenv
    ```
@@ -212,11 +216,11 @@ python python/step1/OEDatabaseDriver.py
    ```bash
    pip install -r requirements.txt
    ```
-3. Create a `.env` file with:
+6. Create a `.env` file with:
    ```
    OE_SERVICE_URL=http://localhost:8080/oeautos/rest/
    ```
-4. Write `OEDatabaseDriver.py` Step 1 code (load `.env` and print `OE_SERVICE_URL`) to verify config.
+7. Copy and run `OEDatabaseDriver.py` Step 1 code (load `.env` and print `OE_SERVICE_URL`) to verify config.
 
 ---
 
