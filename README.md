@@ -332,7 +332,7 @@ python python/step1/OEDatabaseDriver.py
   ```
   VITE_LIVEKIT_URL=\[YOUR LIVEKIT URL\]
   ```
-11. Run front end with 
+12. Run front end with 
   ```bash
    npm run dev
    ```
