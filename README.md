@@ -133,7 +133,7 @@ python python/step1/OEDatabaseDriver.py
    - Add `C:\OpenEdge\WRK\oeautos` to PROPATH
 7. Start the AppServer.
 8. In **OE Developer**:
-   - Choose `C:\OpenEdge\WRK\oeautos` as the new workspace
+   - Choose `C:\OpenEdge\WRK\` as the new workspace
    - Create a new OpenEdge project named **AgentTools**
    - Server project
    - Transport: REST
