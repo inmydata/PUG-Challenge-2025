@@ -227,8 +227,8 @@ python python/step1/OEDatabaseDriver.py
    ```
 ---
 
-### Step 3: Python Driver – Saving & Retrieving Cars
-1. Copy requirements.txt and OEDatabaseDriver.py from Step 2 into C:\work\Agents. Note 'requests' has been added to requirements.txt and OEDatabaseDriver.py now shows errors
+### Step 3: Python Driver – Saving Cars
+1. Copy requirements.txt and OEDatabaseDriver.py from Step 3 into C:\work\Agents. Note 'requests' has been added to requirements.txt and OEDatabaseDriver.py now shows errors
 2. Install new dependencies
    ```bash
    pip install -r requirements.txt
@@ -239,7 +239,15 @@ python python/step1/OEDatabaseDriver.py
    py OEDatabaseDriver.py
    ```
 4. Use OpenEdge\ViewCars.w to confirm record has been created
+---
 
+### Step 4: Python Driver – Retrieving Cars
+1. Copy OEDatabaseDriver.py from Step 4 into C:\work\Agents.
+2. Review get_car method
+3. Run the code to test
+  ```bash
+   py OEDatabaseDriver.py
+   ```
 ---
 
 ### Step 4: Introducing the AI Agent (LiveKit Integration)
