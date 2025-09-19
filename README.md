@@ -22,7 +22,7 @@ You’ll **copy** the code for each step from the provided `examples/` folders a
 
 ## Prerequisites
 
-- **Progress OpenEdge Developers Kit** (CLASSROOM edition is suffice) [https://www.progress.com/oedk](https://www.progress.com/oedk)
+- **Progress OpenEdge Developers Kit** (CLASSROOM edition is sufficient) [https://www.progress.com/oedk](https://www.progress.com/oedk)
 - **Visual Studio Code** (Code editor for python and js) — <https://code.visualstudio.com/>
 - **Node.js** (for React frontend) — <https://nodejs.org/>
 - **Python 3.10+** (venv)
@@ -107,63 +107,150 @@ python python/step1/OEDatabaseDriver.py
 
 ## Workshop Steps (copy code from examples; focus on config + understanding)
 
-### 1) OpenEdge: Build the **Car** REST Service (PASOE)
+### Step 1: OpenEdge Setup – Server, Database, and REST Service
+1. Create working directories:
+   ```text
+   C:\OpenEdge\WRK\oeautos
+   C:\OpenEdge\WRK\oeautos\db
+   ```
+2. Create an empty database:
+   ```text
+   prodb oeautos empty
+   ```
+3. Load schema file:
+   ```text
+   load oeautos.df
+   ```
+4. Add `oeautos` database to **Progress OE Explorer** and start it.
+5. Create a new **Progress Application Server** with the following settings:
+   - Instance name: `oeautos`  
+   - AdminServer: `localhost`  
+   - Location: Local  
+   - Security model: Developer  
+   - Autostart: checked  
+6. Edit the `oeautos` ABL application configuration:
+   - Startup parameters: `-db oeautos -H localhost -S <<PORT>>`
+   - Add `C:\OpenEdge\WRK\oeautos` to PROPATH
+7. Start the AppServer.
+8. In **OE Developer**:
+   - Choose `C:\OpenEdge\WRK\oeautos` as the new workspace
+   - Create a new OpenEdge project named **AgentTools**
+   - Transport: REST
+   - Finish → Open Perspective
+9. Add database to project:
+   - Right-click project → **Properties** → **OpenEdge Database Connections** → Configure  
+   - Add new connection for `oeautos` server.
+10. Add a new webhandler:
+    - Name: `carRestHandler`  
+    - Unselect all method stubs  
+    - Copy in template code
+11. Add REST service:
+    - Go to **Defined Services → AgentToolsService**
+    - Create new ABL Service:
+      - Transport: REST  
+      - Name: `carService`  
+      - Relative URI: `/carService`
+12. Add **resources**:
+    - `saveCar` (POST) → bind to `carRestHandler.SaveCar` with form params: `reg, make, model, year`
+    - `getCar` (GET) → bind to `carRestHandler.GetCar` with query param `reg` and response `ttCar`
+13. Publish the service to the `oeautos` server.
 
-- Create (or use) an OE workspace and database, add a **REST** transport project (e.g., `AgentTools`).  
-- Add **`carRestHandler`** and define a REST service **`carService`** with endpoints:
-  - `POST /carService/saveCar` → **SaveCar** — form params: `reg, make, model, year` → returns `"OK"` on success
-  - `GET  /carService/getCar`  → **GetCar**  — query param: `reg` → returns JSON with `ttCar` array
-- **Publish** `carService` to your PASOE instance and verify it’s reachable (URL based on `OE_SERVICE_URL`).
+---
 
-> Don’t hand-type handlers — **copy** the handler/service artifacts from `openedge/` examples and adjust names/paths as needed.
+### Step 2: Python Driver – Environment & Connectivity
+1. Create and activate a virtual environment:
+   ```bash
+   py -m venv .venv
+   .\.venv\Scripts\activate
+   ```
+2. Create a `requirements.txt` file and add:
+   ```
+   python-dotenv
+   ```
+   Then install:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Create a `.env` file with:
+   ```
+   OE_SERVICE_URL=http://localhost:8080/oeautos/rest/
+   ```
+4. Write `OEDatabaseDriver.py` Step 1 code (load `.env` and print `OE_SERVICE_URL`) to verify config.
 
-### 2) Python Driver: **save_car()**
+---
 
-- In `OEDatabaseDriver`, load `.env`, set `BASE_URL = OE_SERVICE_URL`.
-- Implement `save_car(reg, make, model, year)` using `requests.post` with `application/x-www-form-urlencoded` to `carService/saveCar`.
-- Expect `"OK"` on success; handle HTTP errors gracefully.
+### Step 3: Python Driver – Saving & Retrieving Cars
+1. Install `requests`:
+   ```bash
+   pip install requests
+   ```
+2. Extend `OEDatabaseDriver.py` with:
+   - `save_car(reg, make, model, year)` → POST to `/carService/saveCar`
+   - `get_car(reg)` → GET from `/carService/getCar`, parse JSON `ttCar`, and return a `Car` dataclass.
+3. Test scripts:  
+   - Run Step2 and Step3 versions of `OEDatabaseDriver.py`
+   - Remove test code afterwards.
 
-Run a quick script (provided in `python/step2/`) to save a test car and print success/failure.
+---
 
-### 3) Python Driver: **get_car()** + `Car` dataclass
+### Step 4: Introducing the AI Agent (LiveKit Integration)
+1. Create a **LiveKit** account → project → API Key → save values in `.env`.
+2. Create an **OpenAI** account → API Key → save to `.env`.
+3. Build `agent.py` with:
+   - `Assistant` subclass of `livekit.agents.Agent`
+   - Tools exposed with `@function_tool`:
+     - `lookup_car_by_registration_number_in_database`
+     - `add_car_details_to_database`
+     - `get_details_of_current_car`
+   - Agent state stores current car (`Car` dataclass).
+   - `prompts.py` defines INSTRUCTIONS and WELCOME_MESSAGE.
+4. Run `main.py` to start an agent session.
 
-- Add a simple `@dataclass Car(reg, make, model, year:int)`.
-- Implement `get_car(reg)` using `requests.get` to `carService/getCar?reg=...` and parse JSON.  
-  Look for `ttCar` list; map the first item to `Car` or return `None` if not found.
-- Test with the provided `python/step3/` script.
+---
 
-### 4) LiveKit Agent: **Single Agent** (car lookup/add)
+### Step 5: Booking Functionality
+1. Add new OpenEdge service for bookings (`bookingRestHandler`), publish similar to car service.
+2. Extend Python driver with:
+   - `get_next_available_booking(start_date)`
+   - `save_booking(reg, booking_date, description)`
+   - `get_booking(reg)`
+3. Extend agent with booking tools:
+   - `get_the_date_today`
+   - `get_next_available_booking_date`
+   - `book_appointment`
+   - `get_booking`
+4. Update prompts so the agent offers booking after car lookup.
 
-- Create an `Assistant` class (subclass of `livekit.agents.Agent`) with **instructions** and a **welcome message**.
-- Expose driver calls as **function tools** (decorator) so the LLM can invoke them:
-  - `lookup_car_by_registration_number_in_database(reg)` → calls `driver.get_car(...)`
-  - `add_car_details_to_database(reg, make, model, year)` → calls `driver.save_car(...)`
-  - `get_details_of_current_car()` → returns last retrieved/created car
-- Configure OpenAI + LiveKit from `.env`. Start the agent main (`python python/step4-agent/main.py`).
+---
 
-**Test in the browser** using **LiveKit Agents Playground**: connect to your running agent and try a simple flow (see *Testing* below).
+### Step 6: Multi-Agent Architecture
+1. Create `accountAgent.py`:
+   - Handles car lookup/creation.
+   - Transfers to booking agent when account found.
+2. Create `bookingAgent.py`:
+   - Handles booking flow (dates, appointments).
+   - Receives `Car` object from account agent for context.
+3. Main app starts with AccountAssistant → transfers to BookingAssistant.
 
-### 5) Extend Backend + Agent: **Bookings**
+---
 
-- Add a **`bookingRestHandler`** and publish a `bookingService` with endpoints such as:
-  - `GET  /bookingService/getBooking?reg=...` → current booking (if any)
-  - `POST /bookingService/saveBooking` → create booking for `reg` on `date` with `description`
-  - `GET  /bookingService/nextAvailable?startDate=...` → next available slot
-- Extend `OEDatabaseDriver` with `get_booking`, `save_booking`, `get_next_available_booking`.
-- Add agent tools:
-  - `get_the_date_today()`
-  - `get_next_available_booking_date(earliest_date)`
-  - `book_appointment(reg, date, description)`
-  - `get_booking(reg)`
-- Update instructions so the agent **offers to make/check bookings** after account lookup.
-
-### 6) **Multi‑Agent** Refactor (handoff)
-
-- Split into `AccountAssistant` (find/create car) and `BookingAssistant` (schedule/look up bookings).
-- After a successful lookup/create, **handoff** by returning a `BookingAssistant(car=...)` from the account agent’s tool.
-- Booking agent starts with the car in context and focuses only on scheduling.
-
-Start with `python/step6-multiagent/main.py` and repeat the Playground test.
+### Step 7: Frontend
+1. Install Node.js
+2. Create React project:
+   ```bash
+   npm create vite@latest frontend -- --template react
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   npm install @livekit/components-react @livekit/components-styles livekit-client --save
+   ```
+4. Delete default assets/public folders, replace with `frontend/step1`.
+5. Create and run a **Token Server** (Python, with `.env` livekit values).
+6. Replace `frontend/step2` code, run:
+   ```bash
+   npm run dev
+   ```
 
 ---
 
