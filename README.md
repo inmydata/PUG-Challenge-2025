@@ -273,7 +273,7 @@ README.md
 
 ## (Optional) Bonus: React Frontend + Token Server
 
-### Step 7: Frontend (optional)
+### Step 8: Frontend (optional)
 1. If you don’t already have it, download and install node.js  [https://nodejs.org/](https://nodejs.org/)
 2. Open new cmd and cd to C:\Work
 3. Run command 
@@ -301,7 +301,7 @@ README.md
 
 ---
 
-### Step 8: Token Server (optional)
+### Step 9: Token Server (optional)
 1. Create directory C:\work\TokenServer
 2. Open a new VSCode window, and open directory C:\work\TokenServer
 3. New Terminal
