@@ -192,6 +192,7 @@ python python/step1/OEDatabaseDriver.py
     - In  **Mapping Resources** → **Input** → **URL Parameters** → **Query String Parameters** left click over reg and drag the connector to **Parameters** → **Interface Parameters** → **reg**
     - Drag a connector from **Mapping Resources** → **Output** → **Parameters** → **Interface Parameters** → **ttCar** to **Mapping Resources** → **Output** → **Response** → **HTTP Message** → **Body** (NB: Be careful to drag the connector to the line that contains 'Body', **not** the line below that displays [Drop a parameter here...])
 15. Publish the service to the `oeautos` server:
+    - Save carService changes
     - In the **Servers** panel, right click **oeautos in ..** and select **Add and Remove**
     - Select carService in the **Available** list, and press **Add>**
     - Press Finish
