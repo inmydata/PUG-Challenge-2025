@@ -220,7 +220,7 @@ python python/step1/OEDatabaseDriver.py
    ```
    OE_SERVICE_URL=http://localhost:8080/oeautos/rest/
    ```
-7. Copy and run `OEDatabaseDriver.py` Step 1 code (load `.env` and print `OE_SERVICE_URL`) to verify config.
+7. Copy and run `OEDatabaseDriver.py` Step 1 code to C:\Work\Agent\OEDatabaseDriver.py (load `.env` and print `OE_SERVICE_URL`) to verify config.
 
 ---
 
