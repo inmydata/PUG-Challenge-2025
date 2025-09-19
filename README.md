@@ -161,10 +161,39 @@ python python/step1/OEDatabaseDriver.py
       - Transport: REST  
       - Name: `carService`  
       - Relative URI: `/carService`
-13. Add **resources**:
-    - `saveCar` (POST) → bind to `carRestHandler.SaveCar` with form params: `reg, make, model, year`
+13. Add **saveCar resources**:
+    - select carService in Project Explorer
+    - press the green + button to the right of **ABL Resources**
+    - Resource URI: /saveCar
+    - Press OK
+    - Select ... to the right of **Verb='POST'**
+    - Select Resource **PASOEContent** → **WEB-INF** → **openedge** → **carRestHandler.cls**
+    - Select ABL routines  → **saveCar**
+    - Press OK
+    - In  **Mapping Resources** → **Input** → **HTTP Message**, right click **Form Parameters** and select  Add Node
+    - Type: Form Parameter
+    - Form Parameter: reg
+    - In  **Mapping Resources** → **Input** → **HTTP Message** → **Form Parameters** left click over reg and drag the connector to **Parameters** → **Interface Parameters** → **reg**
+    - Repeat to add and bind Form Parameters for make, model and year
+    - Select the Output tab under **Mapping Resources**
+    - Drag a connector from **Mapping Resources** → **Output** → **Parameters** → **Interface Parameters** → **response** to **Mapping Resources** → **Output** → **Response** → **HTTP Message** → **Body** (NB: Be careful to drag the connector to the line that contains 'Body', **not** the line below that displays [Drop a parameter here...])
+14. Add **getCar resources**:
+    - select carService in Project Explorer
+    - press the green + button to the right of **ABL Resources**
+    - Resource URI: /getCar
+    - Press OK
+    - Select ... to the right of **Verb='GET'**
+    - Select Resource **PASOEContent** → **WEB-INF** → **openedge** → **carRestHandler.cls**
+    - Select ABL routines  → **getCar**
+    - Press OK
+    - In  **Mapping Resources** → **Input** → **URL Parameters**, right click **Query String Parameters** and select  Add Node
+    - Type: Query String Parameter
+    - Form Query String Parameter: reg
+    - In  **Mapping Resources** → **Input** → **URL Parameters** → **Query String Parameters** left click over reg and drag the connector to **Parameters** → **Interface Parameters** → **reg**
+    - Drag a connector from **Mapping Resources** → **Output** → **Parameters** → **Interface Parameters** → **ttCar** to **Mapping Resources** → **Output** → **Response** → **HTTP Message** → **Body** (NB: Be careful to drag the connector to the line that contains 'Body', **not** the line below that displays [Drop a parameter here...])
+
     - `getCar` (GET) → bind to `carRestHandler.GetCar` with query param `reg` and response `ttCar`
-14. Publish the service to the `oeautos` server.
+15. Publish the service to the `oeautos` server.
 
 ---
 
