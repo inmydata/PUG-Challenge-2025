@@ -138,6 +138,7 @@ python python/step1/OEDatabaseDriver.py
    - Server project
    - Transport: REST
    - Finish → Open Perspective
+   - Delete **Defined Services** → **AgentToolsService** (we will create are own')
 9. Add database to project:
    - Right-click project → **Properties** → **Progress OpenEdge** → **Database Connections** → Configure database connections 
    - Click New to add new connection for `oeautos` server.
@@ -156,8 +157,7 @@ python python/step1/OEDatabaseDriver.py
     - Unselect all method stubs  
     - Copy in template code
 12. Add REST service:
-    - Go to **Defined Services → AgentToolsService**
-    - Create new ABL Service:
+    - Right-click project → **New** → **ABL Service**
       - Transport: REST  
       - Name: `carService`  
       - Relative URI: `/carService`
