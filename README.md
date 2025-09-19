@@ -328,6 +328,10 @@ python python/step1/OEDatabaseDriver.py
 5. Copy in contents of frontend\step 1
 6. Log in to https://LiveKit.io, got settings..API Keys .. Generate Token
 10. Copy token to line 16 of src/components/LiveKitModal.jsx 
+11. Create a .env file and enter 
+  ```
+  VITE_LIVEKIT_URL=\[YOUR LIVEKIT URL\]
+  ```
 11. Run front end with 
   ```bash
    npm run dev
