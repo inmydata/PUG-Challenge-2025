@@ -133,11 +133,12 @@ python python/step1/OEDatabaseDriver.py
    - Add `C:\OpenEdge\WRK\oeautos` to PROPATH
 7. Start the AppServer.
 8. In **OE Developer**:
-   - Choose `C:\OpenEdge\WRK\` as the new workspace
+   - Choose `C:\OpenEdge\WRK\oeautos` as the new workspace
    - Create a new OpenEdge project named **AgentTools**
    - Server project
    - Transport: REST
    - Finish → Open Perspective
+   - Delete **Defined Services** → **AgentToolsService** (we will create are own')
 9. Add database to project:
    - Right-click project → **Properties** → **Progress OpenEdge** → **Database Connections** → Configure database connections 
    - Click New to add new connection for `oeautos` server.
