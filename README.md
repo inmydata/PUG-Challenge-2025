@@ -330,7 +330,7 @@ python python/step1/OEDatabaseDriver.py
 9. Copy token to line 16 of src/components/LiveKitModal.jsx 
 10. Create a .env file and enter 
   ```
-  VITE_LIVEKIT_URL=\[YOUR LIVEKIT URL\]
+  VITE_LIVEKIT_URL=[YOUR LIVEKIT URL]
   ```
 11. Run front end with 
   ```bash
