@@ -149,8 +149,7 @@ python python/step1/OEDatabaseDriver.py
    - Press Next to Finish, then Apply and Close
    - Select checkbox next to the new connection, Apply and Close
 10. Add Server to project:
-   - Select Servers panel
-   - Click on "No servers are available. Click this link to create a new server .."
+   - Right-click project → **New** → **Server**
    - Select **Progress Software Corporation** → **Progress Application Server for OpenEdge**, and press Next
    - Select oeautos PAS and press Finish
 11. Add a new webhandler:
