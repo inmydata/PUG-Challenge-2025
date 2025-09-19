@@ -347,18 +347,22 @@ python python/step1/OEDatabaseDriver.py
   ```bash
   py -m venv .venv 
   ```
-5. copy contents of TokenServer from the workshop files
-6. Install requirements 
+5. Activate the virtual environment
+  ```bash
+  .\.venv\Scripts\activate
+  ```
+6. copy contents of TokenServer from the workshop files
+7. Install requirements 
   ```bash
   pip install -r requirements.txt
   ```
-7. Enter livekit values into .env
-8. Start server 
+8. Enter livekit values into .env
+9. Start server 
   ```bash
   py server.py
   ```
-9. Copy contents of frontend\step 2
-10. Run frontend with 
+10. Copy contents of frontend\step 2
+11. Run frontend with 
   ```bash
   npm run dev”
   ```
