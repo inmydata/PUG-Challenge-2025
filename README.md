@@ -313,7 +313,11 @@ python python/step1/OEDatabaseDriver.py
 
 ### Step 7: Frontend (optional)
 1. If you don’t already have it, download and install node.js  [https://nodejs.org/](https://nodejs.org/)
-2. Run command `npm create vite@latest frontend -- --template react`
+2. Open new cmd and cd to C:\Work
+2. Run command 
+  ```bash
+  npm create vite@latest frontend -- --template react
+  ```
 3. Open frontend directory in a new VSCode window
 3. Install dependencies:
    ```bash
