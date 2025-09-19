@@ -121,7 +121,7 @@ python python/step1/OEDatabaseDriver.py
    ```text
    load oeautos.df
    ```
-4. Add `oeautos` database to **Progress OE Explorer** and start it (make a note of the port number <<PORT>>).
+4. Add `oeautos` database to **Progress OE Explorer** and start it (make a note of the port number i.e 25150).
 5. Create a new **Progress Application Server** with the following settings:
    - Instance name: `oeautos`  
    - AdminServer: `localhost`  
@@ -129,7 +129,7 @@ python python/step1/OEDatabaseDriver.py
    - Security model: Developer  
    - Autostart: checked  
 6. Edit the `oeautos` ABL application configuration:
-   - Startup parameters: `-db oeautos -H localhost -S <<PORT>>`
+   - Startup parameters: `-db oeautos -H localhost -S 25150`
    - Add `C:\OpenEdge\WRK\oeautos` to PROPATH
 7. Start the AppServer.
 8. In **OE Developer**:
@@ -144,7 +144,7 @@ python python/step1/OEDatabaseDriver.py
    - Connection name: oeautos
    - Physical name: db\oeautos
    - Host name: localhost
-   - Service/Port: <<PORT>>
+   - Service/Port: 25150
    - Press Next to Finish, then Apply and Close
    - Select checkbox next to the new connection, Apply and Close
 10. Add Server to project:
