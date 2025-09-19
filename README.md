@@ -50,57 +50,17 @@ You’ll **copy** the code for each step from the provided `examples/` folders a
 ## Repository Layout (at a glance)
 
 ```
-/openedge/            # ABL handlers/services templates for Car/Booking
+/openedge/            # ABL handlers/services templates for Car/Booking and test app
 /python/
-  /step1/             # OEDatabaseDriver env sanity-check
-  /step2/             # save_car() via POST
-  /step3/             # get_car() via GET + dataclass
-  /step4-agent/       # Single-agent (car lookup/add) with LiveKit
-  /step5-bookings/    # Adds booking tools + driver methods
-  /step6-multiagent/  # AccountAgent → BookingAgent handoff
+  /step2/             # OEDatabaseDriver env sanity-check
+  /step3/             # save_car() via POST
+  /step4/             # get_car() via GET + dataclass
+  /step5/             # Single-agent (car lookup/add) with LiveKit
+  /step6/             # Adds booking tools + driver methods
+  /step7/             # Multi-agent architecture AccountAgent → BookingAgent handoff
 /frontend/            # (Optional) React demo UI
 /token-server/        # (Optional) LiveKit token server (Python)
 README.md
-```
-
-*(Exact names may vary; follow the workshop instructions.)*
-
----
-
-## Quick Start (Python)
-
-1) **Create & activate venv**
-```bash
-python -m venv .venv
-# Windows
-.\.venv\Scripts\activate
-# macOS/Linux
-source .venv/bin/activate
-```
-
-2) **Install dependencies**
-```bash
-pip install -r requirements.txt
-```
-
-3) **Create `.env`**
-```ini
-# OpenEdge (PASOE REST) base URL
-OE_SERVICE_URL=http://localhost:8080/oeautos/rest/
-
-# LiveKit (agent runtime)
-LIVEKIT_URL=wss://<your-host>.livekit.cloud
-LIVEKIT_API_KEY=...
-LIVEKIT_API_SECRET=...
-
-# OpenAI
-OPENAI_API_KEY=...
-```
-
-4) **Smoke test** (Step 1)
-```bash
-python python/step1/OEDatabaseDriver.py
-# Should print OE_SERVICE_URL
 ```
 
 ---
@@ -311,6 +271,8 @@ python python/step1/OEDatabaseDriver.py
 
 ---
 
+## (Optional) Bonus: React Frontend + Token Server
+
 ### Step 7: Frontend (optional)
 1. If you don’t already have it, download and install node.js  [https://nodejs.org/](https://nodejs.org/)
 2. Open new cmd and cd to C:\Work
@@ -394,23 +356,8 @@ In the **LiveKit Agents Playground**:
 ## Troubleshooting
 
 - **PASOE service not reachable**: confirm it’s **published**, note the correct **port/context**, and that `OE_SERVICE_URL` ends with `/rest/`.
-- **CORS/401** when testing from browsers: use the **Agents Playground** (server‑side agent) to avoid direct browser calls to PASOE.
 - **LiveKit connection**: verify `LIVEKIT_URL`, `LIVEKIT_API_KEY`, and `LIVEKIT_API_SECRET` in `.env`.
 - **OpenAI**: ensure `OPENAI_API_KEY` is set and your model name is valid for your account.
-
----
-
-## (Optional) Bonus: React Frontend + Token Server
-
-If you want a small UI after the workshop:
-
-- **Frontend**: `npm create vite@latest frontend -- --template react`, then `npm install`, and add LiveKit components:
-  ```bash
-  npm install @livekit/components-react @livekit/components-styles livekit-client
-  ```
-  Replace the default assets with the `frontend/step*` example content; paste a test token or wire a token server.
-- **Token Server (Python)**: create `token-server/`, copy example files, `pip install -r requirements.txt`, set LiveKit env in `.env`, and run `python server.py`.
-- Point the frontend to your token endpoint and start with `npm run dev`.
 
 ---
 
@@ -422,20 +369,6 @@ If you want a small UI after the workshop:
 - **Dataclasses** (`@dataclass`) create light DTOs for records like `Car`.  
 - **Requests** library is the go‑to for HTTP calls (`requests.get/post`, `r.json()`).  
 - **OO Basics**: `class`, `__init__`, `self` (like `THIS-OBJECT`, but explicit). Inherit with `class Sub(Super):`.
-
-Try this warm‑up:
-```python
-# hello_agent.py
-import requests
-
-def main():
-    resp = requests.get("https://httpbin.org/get")
-    print("Status:", resp.status_code)
-    print("JSON:", resp.json())
-
-if __name__ == "__main__":
-    main()
-```
 
 ---
 
