@@ -208,7 +208,7 @@ python python/step1/OEDatabaseDriver.py
    py -m venv .venv
    .\.venv\Scripts\activate
    ```
-5. Create a `requirements.txt` file and add:
+5. Create a `C:\work\Agent\requirements.txt` file and add:
    ```
    python-dotenv
    ```
