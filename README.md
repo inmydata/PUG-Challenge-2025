@@ -249,7 +249,7 @@ README.md
 2. Add new ABL Service (`bookingService`)
 3. Add REST resource (`getNextAvailableBooking`), GET verb bound to GetNextAvailableBooking, with input query parameter startDate, and output bookingDate to the Body.
 4. Add REST resource (`saveBooking`), POST bound to verb bound to SaveBooking, with form parameters reg, bookingDate and description and output response bound to Body.
-5. ADD REST resource (`getBooking`), GET verb bound to GetBooking, with query parameter reg, and output parametersBookingDate and Description bound to the Body parameters **Note:** You need to bind these parameters to the parameters section of the body (`[Drop a parameter here]`), not the body itself
+5. ADD REST resource (`getBooking`), GET verb bound to GetBooking, with query parameter reg, and output parameters BookingDate and Description bound to the Body parameters **Note:** You need to bind these parameters to the parameters section of the body (`[Drop a parameter here]`), not the body itself
 6. Save your changes, and publish to the server.
 7. Copy in code from STEP 6 and review.
 8. Start agent:
