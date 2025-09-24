@@ -148,7 +148,7 @@ README.md
     - Press OK
     - In  **Mapping Resources** → **Input** → **URL Parameters**, right click **Query String Parameters** and select  Add Node
     - Type: Query String Parameter
-    - Form Query String Parameter: reg
+    - Query String Parameter: reg
     - In  **Mapping Resources** → **Input** → **URL Parameters** → **Query String Parameters** left click over reg and drag the connector to **Parameters** → **Interface Parameters** → **reg**
     - Drag a connector from **Mapping Resources** → **Output** → **Parameters** → **Interface Parameters** → **ttCar** to **Mapping Resources** → **Output** → **Response** → **HTTP Message** → **Body** (NB: Be careful to drag the connector to the line that contains 'Body', **not** the line below that displays [Drop a parameter here...])
 15. Publish the service to the `oeautos` server:
