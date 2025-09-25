@@ -41,7 +41,7 @@ class AccountAssistant(Agent):
     @function_tool
     async def get_details_of_current_car(self):
         logger.info("get car  details")
-        return f"The car details are: {self.get_car_str(self.car)}"
+        return f"The car details are: {self.get_car_str()}"
     
     @function_tool
     async def add_car_details_to_database(

@@ -31,7 +31,7 @@ class Car:
 @dataclass
 class Booking:
     def __init__(self, booking_date: Optional[date] = None, description: str = ""):
-        self.booking_date = booking_date
+        self.booking_date = booking_date # type: ignore
         self.description = description
     booking_date: date
     description: str
