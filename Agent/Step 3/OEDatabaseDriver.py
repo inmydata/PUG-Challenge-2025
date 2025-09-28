@@ -56,8 +56,9 @@ class OEDatabaseDriver:
 # Example usage
 if __name__ == "__main__":
     driver = OEDatabaseDriver()
-    success = driver.save_car("GJ18YBR", "Audi", "A4", 2018)
+    success = driver.save_car("GJ24YBR", "Audi", "A4", 2024)
     print("Car saved successfully:", success)
+
 
 
 
