@@ -4,10 +4,6 @@ import requests
 
 load_dotenv(".env", override=True)
 
-import os
-import requests
-from dotenv import load_dotenv
-
 # Load environment variables from .env
 load_dotenv()
 
@@ -62,6 +58,7 @@ if __name__ == "__main__":
     driver = OEDatabaseDriver()
     success = driver.save_car("GJ18YBR", "Audi", "A4", 2018)
     print("Car saved successfully:", success)
+
 
 
 
