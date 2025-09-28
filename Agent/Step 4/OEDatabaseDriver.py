@@ -98,10 +98,11 @@ class OEDatabaseDriver:
 # Example usage:
 if __name__ == "__main__":
     driver = OEDatabaseDriver()
-    car = driver.get_car("GJ18YBR")
+    car = driver.get_car("GJ24YBR")
     if car:
         print("Found:", car)
     else:
         print("No car found for that reg.")
+
 
 
