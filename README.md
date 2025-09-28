@@ -180,7 +180,7 @@ README.md
    ```
    OE_SERVICE_URL=http://localhost:8080/AgentTools/rest/
    ```
-7. Copy `OEDatabaseDriver.py` Step 1 code to C:\Work\Agent\OEDatabaseDriver.py (load `.env` and print `OE_SERVICE_URL`).
+7. Copy `OEDatabaseDriver.py` Step 2 code to C:\Work\Agent\OEDatabaseDriver.py (load `.env` and print `OE_SERVICE_URL`).
 8. Run the code to test
   ```bash
    py OEDatabaseDriver.py
