@@ -20,32 +20,39 @@ class OEDatabaseDriver:
             model (str): Car model (e.g., "A4")
             year (int): Year of manufacture
 
-
         Returns:
             bool: True if save was successful, False otherwise
         """
-        url = f"{BASE_URL}carService/saveCar"
+        url = f"{BASE_URL}carService"
 
         payload = {
             "reg": reg,
             "make": make,
             "model": model,
-            "year": str(year)  # send as string for form-urlencoded
+            "year": str(year)  # API expects year as string
         }
 
         headers = {
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/json"
         }
 
         try:
-            response = requests.post(url, data=payload, headers=headers)
-            response.raise_for_status()
+            response = requests.post(url, json=payload, headers=headers)
 
-            # Success check: API returns "OK"
-            if response.text.strip().upper() == "OK":
-                return True
+            if response.status_code == 200:
+                if response.text.strip().upper() == "OK":
+                    return True
+                else:
+                    print(f"Unexpected response: {response.text}")
+                    return False
+
+            elif response.status_code == 409:
+                # Duplicate registration case
+                print(f"Conflict: {response.text.strip()}")
+                return False
+
             else:
-                print(f"Unexpected response: {response.text}")
+                print(f"Unexpected status {response.status_code}: {response.text}")
                 return False
 
         except requests.exceptions.RequestException as e:
@@ -56,7 +63,7 @@ class OEDatabaseDriver:
 # Example usage
 if __name__ == "__main__":
     driver = OEDatabaseDriver()
-    success = driver.save_car("GJ24YBR", "Audi", "A4", 2024)
+    success = driver.save_car("GJ24YBR", "Audi", "A4", 2018)
     print("Car saved successfully:", success)
 
 
