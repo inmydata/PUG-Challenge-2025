@@ -43,7 +43,7 @@ class BookingAssistant(Agent):
         if booking is not None:
             await self.session.generate_reply(
                 instructions=
-                    f"""Tell the user you have the following details of their car: 
+                    f"""Always speak English unless the customer speaks another language or asks you to use another language. Tell the user you have the following details of their car: 
                             Registration: {self.car.reg}, 
                             Make: {self.car.make},
                             Model: {self.car.model},
@@ -54,7 +54,7 @@ class BookingAssistant(Agent):
             next_booking_date = self.date_to_long_string(driver.get_next_available_booking(date.today()))
             await self.session.generate_reply(
                 instructions=
-                    f"""Tell the user you have the following details of their car: 
+                    f"""Always speak English unless the customer speaks another language or asks you to use another language. Tell the user you have the following details of their car: 
                             Registration: {self.car.reg}, 
                             Make: {self.car.make},
                             Model: {self.car.model},
