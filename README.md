@@ -387,7 +387,7 @@ README.md
 11. Run frontend with 
 
   ```bash
-  npm run dev”
+  npm run dev
   ```
 
 
