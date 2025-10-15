@@ -94,7 +94,8 @@ README.md
    - Instance name: `oeautos`  
    - AdminServer: `localhost`  
    - Location: Local  
-   - Security model: Developer  
+   - Security model: Developer
+   - Instance Directory `C:\OpenEdge\WRK\oeautos\PAS`
    - Autostart: checked  
 
 6. Edit the `oeautos` ABL application configuration:
