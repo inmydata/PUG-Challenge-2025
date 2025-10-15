@@ -8,7 +8,7 @@ Build an AI agent that reads and writes to a Progress OpenEdge database and book
 
 ## What You’ll Build
 
-- **OpenEdge REST services** for `Car` and `Booking` records.
+- **OpenEdge WEB transport services** for `Car` and `Booking` records.
 - A small, testable **Python driver** (`OEDatabaseDriver`) that calls those REST endpoints.
 - A **LiveKit agent** that uses function tools to call your driver:
   - Lookup/add car details.
