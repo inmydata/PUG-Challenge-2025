@@ -7,6 +7,7 @@ from typing import Annotated
 from dataclasses import asdict
 from bookingAgent import BookingAssistant
 import logging
+from livekit.plugins import openai
 
 
 
@@ -18,7 +19,12 @@ driver = OEDatabaseDriver()
 class AccountAssistant(Agent):
 
     def __init__(self) -> None:
-        super().__init__(instructions=ACCOUNT_INSTRUCTIONS)
+        super().__init__(
+            instructions=ACCOUNT_INSTRUCTIONS,
+            llm=openai.realtime.RealtimeModel(
+                voice="shimmer",
+                temperature=0.8
+            ))
         self.car = Car()
         
     def get_car_str(self):

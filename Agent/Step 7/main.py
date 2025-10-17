@@ -4,19 +4,11 @@ from livekit.agents import AgentSession
 from prompts import WELCOME_MESSAGE
 from accountAgent import AccountAssistant
 from OEDatabaseDriver import Car
-from livekit.plugins import (
-    openai
-)
 
 load_dotenv(".env", override=True)
 
 async def entrypoint(ctx: agents.JobContext):
-    session = AgentSession[Car](
-        llm=openai.realtime.RealtimeModel(
-            voice="shimmer",
-            temperature=0.8
-        )
-    )
+    session = AgentSession[Car]()
 
     await session.start(
         room=ctx.room,

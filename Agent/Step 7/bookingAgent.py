@@ -7,6 +7,7 @@ from typing import Annotated
 from dataclasses import asdict
 from datetime import date, datetime
 import logging
+from livekit.plugins import openai
 
 
 
@@ -20,7 +21,11 @@ class BookingAssistant(Agent):
     def __init__(self, car: Car) -> None:
         self.car = car
         super().__init__(
-            instructions=BOOKING_INSTRUCTIONS
+            instructions=BOOKING_INSTRUCTIONS,
+            llm=openai.realtime.RealtimeModel(
+                voice="echo",
+                temperature=0.8
+            )
         )
 
     def get_car_str(self):
@@ -43,7 +48,7 @@ class BookingAssistant(Agent):
         if booking is not None:
             await self.session.generate_reply(
                 instructions=
-                    f"""Tell the user you have the following details of their car: 
+                    f"""Always speak English unless the customer speaks another language or asks you to use another language. Tell the customer you have the following details of their car: 
                             Registration: {self.car.reg}, 
                             Make: {self.car.make},
                             Model: {self.car.model},
@@ -54,7 +59,7 @@ class BookingAssistant(Agent):
             next_booking_date = self.date_to_long_string(driver.get_next_available_booking(date.today()))
             await self.session.generate_reply(
                 instructions=
-                    f"""Tell the user you have the following details of their car: 
+                    f"""Always speak English unless the customer speaks another language or asks you to use another language. Tell the customer you have the following details of their car: 
                             Registration: {self.car.reg}, 
                             Make: {self.car.make},
                             Model: {self.car.model},
