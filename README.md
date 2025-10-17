@@ -2,7 +2,7 @@
 
 Build an AI agent that reads and writes to a Progress OpenEdge database and books automotive service appointments. This workshop is designed for **OpenEdge developers with no prior Python/agent experience**. You’ll follow a guided path, copying working examples at each step and learning how they fit together.
 
-> We’ll use **PASOE REST services** for data access, a small **Python driver** to call those services, and a **LiveKit agent** (with OpenAI) that converses with users, manages car records, and schedules bookings. We’ll initially run the agent through the **LiveKit Agents Playground** and if time, implement a React front end and python token service to complete the app.
+> We’ll use **PASOE WEB Transport services** for data access, a small **Python driver** to call those services, and a **LiveKit agent** (with OpenAI) that converses with users, manages car records, and schedules bookings. We’ll initially run the agent through the **LiveKit Agents Playground** and if time, implement a React front end and python token service to complete the app.
 
 ---
 
@@ -94,7 +94,8 @@ README.md
    - Instance name: `oeautos`  
    - AdminServer: `localhost`  
    - Location: Local  
-   - Security model: Developer  
+   - Security model: Developer
+   - Instance Directory `C:\OpenEdge\WRK\oeautos\PAS`
    - Autostart: checked  
 
 6. Edit the `oeautos` ABL application configuration:
@@ -386,7 +387,7 @@ README.md
 11. Run frontend with 
 
   ```bash
-  npm run dev”
+  npm run dev
   ```
 
 
