@@ -394,7 +394,9 @@ README.md
 
 ---
 
-### Step 10: [MCP Server and dynamic client (optional)](./Agent/Step 10/bookings_mcp/README.md)
+### Step 10: MCP Server and dynamic client (optional)
+
+See the [MCP Server documentation](./Agent/Step%2010/bookings_mcp/README.md) for details.
 
 1. Copy in code from STEP 10 and review.
 2. Start agent:
