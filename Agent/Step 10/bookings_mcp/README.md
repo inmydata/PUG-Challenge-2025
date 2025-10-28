@@ -367,7 +367,7 @@ Imagine you're building an AI customer service system:
 │   - Report generation               │
 │   - All business logic              │
 │                                     │
-│   (1 huge file, 5000+ lines)       │
+│   (1 huge file, 5000+ lines)        │
 └─────────────────────────────────────┘
 ```
 
