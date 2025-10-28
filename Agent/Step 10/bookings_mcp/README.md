@@ -66,17 +66,17 @@ class BookingAssistant:
 │                     OpenEdge Autos Agent                    │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  ┌────────────────────┐         ┌────────────────────┐     │
-│  │  AccountAssistant  │────────▶│  OEDatabaseDriver  │     │
-│  │  (Car Lookup)      │         │  (Direct Calls)    │     │
-│  └────────────────────┘         └────────────────────┘     │
+│  ┌────────────────────┐         ┌────────────────────┐      │
+│  │  AccountAssistant  │────────>│  OEDatabaseDriver  │      │
+│  │  (Car Lookup)      │         │  (Direct Calls)    │      │
+│  └────────────────────┘         └────────────────────┘      │
 │           │                                                 │
 │           │ Transfers to                                    │
 │           ▼                                                 │
-│  ┌────────────────────┐                                    │
-│  │ BookingAssistant   │                                    │
-│  │ (Booking Mgmt)     │                                    │
-│  └─────────┬──────────┘                                    │
+│  ┌────────────────────┐                                     │
+│  │ BookingAssistant   │                                     │
+│  │ (Booking Mgmt)     │                                     │
+│  └─────────┬──────────┘                                     │
 │            │                                                │
 │            │ stdio (stdin/stdout)                           │
 │            │                                                │
@@ -89,10 +89,10 @@ class BookingAssistant:
 ├────────────────────────────────────────────────────────────┤
 │                                                            │
 │  Available Tools:                                          │
-│  • get_the_date_today()                                   │
-│  • get_next_available_booking_date(reg, earliest_date)    │
-│  • book_appointment(reg, date, description)               │
-│  • get_booking(reg)                                       │
+│  • get_the_date_today()                                    │
+│  • get_next_available_booking_date(reg, earliest_date)     │
+│  • book_appointment(reg, date, description)                │
+│  • get_booking(reg)                                        │
 │                                                            │
 │  Each tool makes HTTP calls to backend API                 │
 │                                                            │
