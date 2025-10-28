@@ -316,7 +316,7 @@ README.md
 
 ---
 
-## (Optional) Bonus: React Frontend + Token Server
+## (Optional) Bonus: React Frontend + Token Server and MCP Server
 
 ### Step 8: Frontend (optional)
 
