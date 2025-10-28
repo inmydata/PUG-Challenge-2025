@@ -15,6 +15,7 @@ Build an AI agent that reads and writes to a Progress OpenEdge database and book
   - Offer/confirm bookings.
 - A **multi-agent** version showing a handoff from an **Account agent** → **Booking agent**.
 - *(Optional, if time permits)* A lightweight **React + Token server** demo UI.
+- *(Optional, if time permits)* A bookings **MCP Server** and dynamic **MCP Client**.
 
 You’ll **copy** the code for each step from the provided `examples/` folders and focus on wiring/config + understanding.
 
@@ -58,6 +59,7 @@ You’ll **copy** the code for each step from the provided `examples/` folders a
   /step5/             # Single-agent (car lookup/add) with LiveKit
   /step6/             # Adds booking tools + driver methods
   /step7/             # Multi-agent architecture AccountAgent → BookingAgent handoff
+  /step10/            # (Optional) MCP Server and dynamic client
 /frontend/            # (Optional) React demo UI
 /token-server/        # (Optional) LiveKit token server (Python)
 README.md
@@ -390,6 +392,20 @@ README.md
   npm run dev
   ```
 
+---
+
+### Step 10: [MCP Server and dynamic client (optional)](./Agent/Step 10/bookings_mcp/README.md)
+
+1. Copy in code from STEP 10 and review.
+2. Start agent:
+
+   ```bash
+   py main.py dev
+   ```
+
+3. Log into https://agents-playground.livekit.io/ and check agent behaviour
+
+---
 
 ## Testing the Agent (suggested flow)
 

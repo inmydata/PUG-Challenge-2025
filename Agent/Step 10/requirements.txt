@@ -1,0 +1,9 @@
+python-dotenv
+requests
+livekit-agents[openai,silero,turn-detector]
+livekit-plugins-openai
+livekit-plugins-silero
+livekit-api
+mcp
+nest-asyncio
+fastmcp
