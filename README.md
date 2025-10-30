@@ -213,21 +213,21 @@ README.md
 
 1. Copy `requirements.txt` and `OEDatabaseDriver.py` from Step 3 into `C:\Work\Agent` (note: `requests` has been added to `requirements.txt`).
 
-1. Install new dependencies:
+2. Install new dependencies:
 
    ```powershell
    pip install -r requirements.txt
    ```
 
-1. Review the `save_car` method.
+3. Review the `save_car` method.
 
-1. Run the code to test:
+4. Run the code to test:
 
    ```powershell
    py OEDatabaseDriver.py
    ```
 
-1. Use `OpenEdge\ViewCars.w` to confirm the record has been created.
+5. Use `OpenEdge\ViewCars.w` to confirm the record has been created.
 
 ---
 
@@ -235,9 +235,9 @@ README.md
 
 1. Copy `OEDatabaseDriver.py` from Step 4 into `C:\Work\Agent`.
 
-1. Review the `get_car` method.
+2. Review the `get_car` method.
 
-1. Run the code to test:
+3. Run the code to test:
 
    ```powershell
    py OEDatabaseDriver.py
@@ -249,13 +249,13 @@ README.md
 
 1. Copy contents of Step 5 into `C:\Work\Agent`.
 
-1. Install new dependencies:
+2. Install new dependencies:
 
    ```powershell
    pip install -r requirements.txt
    ```
 
-1. Create a **LiveKit** account:
+3. Create a **LiveKit** account:
 
    - Go to [LiveKit](https://livekit.io/)
    - Click **Start Building** and create an account
@@ -264,23 +264,23 @@ README.md
    - In **Settings** → **API Keys**, reveal the secret and copy the credentials
    - Paste the values into your `.env` file
 
-1. Create an **OpenAI** account:
+4. Create an **OpenAI** account:
 
    - Create an account at [OpenAI Platform](https://platform.openai.com/)
    - From the account settings, create a new API key
    - Add `OPENAI_API_KEY=[YOUR KEY]` to your `.env` file and save
 
-1. Review the code.
+5. Review the code.
 
-1. Start the agent:
+6. Start the agent:
 
    ```powershell
    py main.py dev
    ```
 
-1. Log into the [LiveKit Agents Playground](https://agents-playground.livekit.io/) and connect.
+7. Log into the [LiveKit Agents Playground](https://agents-playground.livekit.io/) and connect.
 
-1. Verify the agent can create and look up cars in the database.
+8. Verify the agent can create and look up cars in the database.
 
 ---
 
@@ -288,28 +288,28 @@ README.md
 
 1. Add a new OpenEdge web handler for bookings (`bookingHandler`) — copy code from Step 6.
 
-1. Add a new ABL Service (`bookingService`) with transport **WEB** and service name `bookingService`.
+2. Add a new ABL Service (`bookingService`) with transport **WEB** and service name `bookingService`.
 
-1. Select existing Web Handler: `bookingHandler`.
+3. Select existing Web Handler: `bookingHandler`.
 
-1. Add resource URIs:
+4. Add resource URIs:
 
    - `/booking`
    - `/booking/{method}`
 
-1. Save your changes and publish to the server.
+5. Save your changes and publish to the server.
 
-1. Copy in code from Step 6 and review.
+6. Copy in code from Step 6 and review.
 
-1. Start the agent:
+7. Start the agent:
 
    ```powershell
    py main.py dev
    ```
 
-1. Log into the [LiveKit Agents Playground](https://agents-playground.livekit.io/) and connect.
+8. Log into the [LiveKit Agents Playground](https://agents-playground.livekit.io/) and connect.
 
-1. Verify the agent can create and look up bookings in the database.
+9. Verify the agent can create and look up bookings in the database.
 
 ---
 
@@ -317,13 +317,13 @@ README.md
 
 1. Copy in code from Step 7 and review.
 
-1. Start the agent:
+2. Start the agent:
 
    ```powershell
    py main.py dev
    ```
 
-1. Log into the [LiveKit Agents Playground](https://agents-playground.livekit.io/) and check agent behaviour.
+3. Log into the [LiveKit Agents Playground](https://agents-playground.livekit.io/) and check agent behaviour.
 
 ---
 
@@ -333,38 +333,38 @@ README.md
 
 1. If you don’t already have it, download and install [Node.js](https://nodejs.org/).
 
-1. Open a new terminal and change directory to `C:\Work`.
+2. Open a new terminal and change directory to `C:\Work`.
 
-1. Scaffold a Vite React app:
+3. Scaffold a Vite React app:
 
    ```powershell
    npm create vite@latest frontend -- --template react
    ```
 
-1. Open the `frontend` directory in a new VS Code window.
+4. Open the `frontend` directory in a new VS Code window.
 
-1. Install dependencies:
+5. Install dependencies:
 
    ```powershell
    npm install
    npm install @livekit/components-react @livekit/components-styles livekit-client --save
    ```
 
-1. Delete `C:\Work\frontend\src\assets` and `C:\Work\frontend\public` (if present).
+6. Delete `C:\Work\frontend\src\assets` and `C:\Work\frontend\public` (if present).
 
-1. Copy in contents of `frontend\step 1` from the examples.
+7. Copy in contents of `frontend\step 1` from the examples.
 
-1. Log in to LiveKit, go to Settings → API Keys → Generate Token.
+8. Log in to LiveKit, go to Settings → API Keys → Generate Token.
 
-1. Copy the token into `src/components/LiveKitModal.jsx` (as indicated in the frontend example).
+9. Copy the token into `src/components/LiveKitModal.jsx` (as indicated in the frontend example).
 
-1. Create a `.env` file and enter:
+10. Create a `.env` file and enter:
 
    ```text
    VITE_LIVEKIT_URL=[YOUR LIVEKIT URL]
    ```
 
-1. Run the front end with:
+11. Run the front end with:
 
    ```powershell
    npm run dev
@@ -376,37 +376,37 @@ README.md
 
 1. Create directory `C:\Work\TokenServer` and open it in VS Code.
 
-1. Open a new terminal.
+2. Open a new terminal.
 
-1. Create a virtual environment:
+3. Create a virtual environment:
 
    ```powershell
    py -m venv .venv
    ```
 
-1. Activate the virtual environment:
+4. Activate the virtual environment:
 
    ```powershell
    .\.venv\Scripts\Activate.ps1
    ```
 
-1. Copy the TokenServer example files from the workshop.
+5. Copy the TokenServer example files from the workshop.
 
-1. Install requirements:
+6. Install requirements:
 
    ```powershell
    pip install -r requirements.txt
    ```
 
-1. Enter LiveKit values into `.env`.
+7. Enter LiveKit values into `.env`.
 
-1. Start the server:
+8. Start the server:
 
    ```powershell
    py server.py
    ```
 
-1. Copy contents of `frontend\step 2` (optional) and run the frontend if desired:
+9. Copy contents of `frontend\step 2` (optional) and run the frontend if desired:
 
    ```powershell
    npm run dev
@@ -420,13 +420,19 @@ See the [MCP Server documentation](./Agent/Step%2010/bookings_mcp/README.md) for
 
 1. Copy in code from Step 10 and review.
 
-1. Start the agent:
+2. Install requirements:
+
+   ```powershell
+   pip install -r requirements.txt
+   ``` 
+
+3. Start the agent:
 
    ```powershell
    py main.py dev
    ```
 
-1. Log into the LiveKit Agents Playground and check agent behaviour.
+4. Log into the LiveKit Agents Playground and check agent behaviour.
 
 ---
 
@@ -436,18 +442,18 @@ In the **LiveKit Agents Playground**:
 
 1. The agent greets and asks for your **registration**.
 
-1. Provide a reg (e.g., `AB12 CDE`).
+2. Provide a reg (e.g., `AB12 CDE`).
 
    - If found, it shows car details.
    - If not, it asks for **make, model, year** and adds the car.
 
-1. The agent asks if you’d like to **book an appointment** or **check existing**.
+3. The agent asks if you’d like to **book an appointment** or **check existing**.
 
-1. Try: “Book me in for the next available date for an annual service.”
+4. Try: “Book me in for the next available date for an annual service.”
 
    - Agent retrieves next slot, confirms, and saves the booking.
 
-1. Ask “What’s my next booking?” to verify.
+5. Ask “What’s my next booking?” to verify.
 
 ---
 
