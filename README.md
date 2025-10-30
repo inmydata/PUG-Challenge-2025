@@ -163,7 +163,6 @@ README.md
     - Press Finish
 
 ---
----
 
 ### Step 2: Python Driver – Environment & Connectivity
 
